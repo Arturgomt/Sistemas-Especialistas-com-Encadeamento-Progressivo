@@ -1,0 +1,47 @@
+{
+  "niveis": [
+    {
+      "prioridade": 1, 
+      "cor": "Vermelho", 
+      "nome": "Emergencia", 
+      "condicoes": [
+        {"campo": "pulso_presente", "operador": "==", "valor": false},
+        {"campo": "respirando", "operador": "==", "valor": false}
+      ]
+    },
+    {
+      "prioridade": 2, 
+      "cor": "Laranja", 
+      "nome": "Muito Urgente", 
+      "condicoes": [
+        {"campo": "spo2", "operador": "<", "valor": 90},
+        {"campo": "escala_dor", "operador": ">=", "valor": 8},
+        {"campo": "glasgow", "operador": "<", "valor": 14}
+      ]
+    },
+    {
+      "prioridade": 3, 
+      "cor": "Amarelo", 
+      "nome": "Urgente", 
+      "condicoes": [
+        {"campo": "temperatura", "operador": ">", "valor": 39},
+        {"campo": "escala_dor", "operador": ">=", "valor": 5}
+      ]
+    },
+    {
+      "prioridade": 4, 
+      "cor": "Verde", 
+      "nome": "Pouco Urgente", 
+      "condicoes": [
+        {"campo": "escala_dor", "operador": ">=", "valor": 1}
+      ]
+    }
+  ],
+  "regras_segunda_ordem": [
+    {"id": "E1", "acao": "notificar_medico"},
+    {"id": "E2", "acao": "elevar_prioridade"},
+    {"id": "E3", "acao": "escalar_supervisor"},
+    {"id": "E4", "acao": "reclassificar_nivel_2"},
+    {"id": "E5", "acao": "protocolo_sobrecarga"}
+  ]
+}
